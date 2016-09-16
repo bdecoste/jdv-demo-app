@@ -25,7 +25,8 @@
 	</licenses>
 
 	<modules>
-        <module>simpleclient</module>
+          <module>simpleclient</module>
+          <module>demo-webapp</module>
 	</modules>
 
 	<properties>
