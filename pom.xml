@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<parent>
-		<artifactId>teiid-quickstart-parent</artifactId>
-		<groupId>org.jboss.teiid.quickstart</groupId>
-		<version>2.1.0.redhat-62-7</version>
-	</parent>
+        <groupId>org.jboss.teiid.quickstart</groupId>
+        <version>2.1.0.redhat-62-7</version>
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>demo-webapp</artifactId>
@@ -13,6 +10,40 @@
 
 	<name>Hibernate Quickstart Using Teiid to Federate Data Sources</name>
 	<description>hibernate4: This quickstart demonstrates how hibernate can federate data through a single relationally mapped object.</description>
+
+         <properties>
+                <!-- Explicitly declaring the source encoding eliminates the following 
+                                             message: -->
+                <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
+                                             resources, i.e. build is platform dependent! -->
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <version.org.scannotation>1.0.3.redhat-4</version.org.scannotation>
+
+            <illegaltransitivereportonly>true</illegaltransitivereportonly>
+
+                <version.org.jboss.integration-platform>6.0.0.CR25-redhat-2</version.org.jboss.integration-platform>
+                <version.commons-httpclient>3.1</version.commons-httpclient>
+
+                <version.teiid>8.7.1.6_2-redhat-6</version.teiid>
+
+        <version.javax.annotation>1.0.1.Final-redhat-3</version.javax.annotation>
+        <version.jboss.as.plugin>7.5.Final</version.jboss.as.plugin>
+        <version.net.jcip>1.0.0.redhat-7</version.net.jcip>
+        <version.org.codehaus.mojo.exec.plugin>1.2.1</version.org.codehaus.mojo.exec.plugin>
+        <version.org.hibernate.search>4.6.0.Final-redhat-2</version.org.hibernate.search>
+        <version.org.infinispan>6.2.0.Final-redhat-4</version.org.infinispan>
+        <version.org.jboss.teiid.quickstart>2.1.0.redhat-62-7</version.org.jboss.teiid.quickstart> <!-- 6.0.2.Final -->
+
+        <version.org.jboss.bom.jboss-javaee-6.0-with-tools>6.4.3.GA</version.org.jboss.bom.jboss-javaee-6.0-with-tools>
+
+                <jdg.slot>jdg-6.6</jdg.slot>
+
+                <version.javax.enterprise>1.0.0.SP4-redhat-5</version.javax.enterprise>
+
+                <version.org.mockito>1.9.5</version.org.mockito>
+
+                <version.junit>4.11</version.junit>
+        </properties>
 
 	<dependencies>
 
@@ -25,12 +56,14 @@
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
             <scope>provided</scope>
+            <version>${version.javax.enterprise}</version>
         </dependency>
         <!-- Import the Common Annotations API (JSR-250), using 'provided' scope as the API is included in JBoss AS 7 -->
         <dependency>
             <groupId>org.jboss.spec.javax.annotation</groupId>
             <artifactId>jboss-annotations-api_1.1_spec</artifactId>
             <scope>provided</scope>
+             <version>${version.javax.annotation}</version>
         </dependency>     	
 
 		<!-- Import the JPA API, we use provided scope as the API is included in 
@@ -39,6 +72,7 @@
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<scope>provided</scope>
+                        <version>1.0.1.Final-redhat-3</version>
 		</dependency>
 
 		<!-- Import the EJB API, we use provided scope as the API is included in 
@@ -47,6 +81,7 @@
 			<groupId>org.jboss.spec.javax.ejb</groupId>
 			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
 			<scope>provided</scope>
+                        <version>1.0.2.Final-redhat-3</version>
 		</dependency>
 
 		<!-- JSR-303 (Bean Validation) Implementation -->
@@ -56,6 +91,7 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<scope>provided</scope>
+                        <version>4.3.2.Final-redhat-2</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
@@ -71,6 +107,7 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<scope>provided</scope>
+                        <version>4.2.20.Final-redhat-1</version>
 		</dependency>
 
 		<!-- Now we declare any tools needed -->
@@ -80,6 +117,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
+                        <version>${version.junit}</version>
 		</dependency>
         
 	</dependencies>
