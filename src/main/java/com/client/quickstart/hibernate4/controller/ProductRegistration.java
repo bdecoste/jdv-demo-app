@@ -16,6 +16,8 @@
  */
 package com.client.quickstart.hibernate4.controller;
 
+import java.net.InetAddress;
+
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -64,7 +66,13 @@ public class ProductRegistration {
 		// using Hibernate session(Native API) and JPA entitymanager
 		Session session = (Session) em.getDelegate();
 		session.persist(newProductInfo);
-
+try {
+  System.out.println("!!!!!!!!!!!!!!!!! register");
+  InetAddress addr = InetAddress.getByName("jdbc-datavirt.demo.svc.cluster.local");
+  System.out.println("!!!!!!!!!!!!!!!!!!!!! addr " + addr);
+} catch (Exception e){
+  e.printStackTrace();
+}
 		try {
 			ProductEventSrc.fire(newProductInfo);
 		} catch (Exception e) {
