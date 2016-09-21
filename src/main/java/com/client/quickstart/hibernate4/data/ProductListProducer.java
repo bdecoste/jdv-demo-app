@@ -1,5 +1,8 @@
 package com.client.quickstart.hibernate4.data;
 
+import java.net.InetAddress;
+import java.util.logging.Logger;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
@@ -22,6 +25,9 @@ public class ProductListProducer {
 	@Inject
 	private EntityManager em;
 
+        @Inject
+	private Logger log;
+
 	private List<ProductInfo> productInfos;
 
 	// @Named provides access the return value via the EL variable name
@@ -40,6 +46,16 @@ public class ProductListProducer {
 	@SuppressWarnings("unchecked")
 	@PostConstruct
 	public void retrieveAllProductsOrderedByName() {
+log.info("!! retrieveAllProductsOrderedByName ");
+try {
+  System.out.println("!!!!!!!!!!!!!!!!! retrieve");
+  log.info("!!!!!!!!!!!!!!!!! retrieve");
+  InetAddress addr = InetAddress.getByName("jdbc-datavirt.demo.svc.cluster.local");
+  System.out.println("!!!!!!!!!!!!!!!!!!!!! addr " + addr);
+  log.info("!!!!!!!!!!!!!!!!!!!!! addr " + addr);
+} catch (Exception e){
+  e.printStackTrace();
+}
 
 		// using Hibernate Session and Criteria Query via Hibernate Native API
 		Session session = (Session) em.getDelegate();
